@@ -1,0 +1,25 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using WebSisMed.Models.Entities;
+
+namespace WebSisMed.Models.EntityConfigurations
+{
+    public class InformacoesComplementaresPacienteConfiguration : IEntityTypeConfiguration<InformacoesComplementaresPaciente>
+    {
+        public void Configure(EntityTypeBuilder<InformacoesComplementaresPaciente> builder)
+        {
+            builder.ToTable("InformacoesComplementaresPaciente");
+
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.Alergias)
+                .HasMaxLength(200);
+
+            builder.Property(x => x.MedicamentoEmUso)
+               .HasMaxLength(200);
+
+            builder.Property(x => x.CirurgiasRealizadas)
+               .HasMaxLength(200);
+        }
+    }
+}
